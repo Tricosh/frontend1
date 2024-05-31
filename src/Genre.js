@@ -1,45 +1,41 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 
-import Books from "./Books";
+import { bookAddGenre } from './actions';
 
 export class Genre extends Component {
 	
 	constructor(props) {
 		super(props)
-		this.state = {
-			genre: [
-				{
-					key: 'all',
-					name: 'Все'
-				},
-				{
-					key: 'приключения',
-					name: 'Приключения'
-				},
-				{
-					key: 'детектив',
-					name: 'Детектив'
-				},
-				{
-					key: 'хоррор',
-					name: 'Хоррор'
-				},
-				{
-					key: 'детское',
-					name: 'Детское'
-				}
-			]
-		}
+		
+		{/*this.onAddGenre = this.onAddGenre.bind(this);*/}	
 	}
+	
+	{/*onAddGenre(e) {
+		e.preventDefault();
+		fetch('genre').then(function(res) {
+			return res.json();
+			}).then((data) => {
+				this.props.dispatch(bookAddGenre(data));
+		});
+	}*/}
+		
 	render() {
 		return (
 			<div className='genre'>
-			{this.state.genre.map(el => (
-			<div key={el.key} onClick={() => this.props.book(el.key)}>{el.name}</div>
-			))}
+			{/*{this.state.genre.map(el => (
+				<div key={el.key} onClick={() => this.onAddGenre}>{el.name}</div>
+			))}*/}
 			</div>
 		)
 	}
-} 
+}
 
-export default (Genre);
+function mapStateToProps(state) {
+
+	return {
+		genres: [...state.genres]
+	}
+}
+
+export default connect(mapStateToProps) (Genre);

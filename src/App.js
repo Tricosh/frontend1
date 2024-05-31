@@ -4,8 +4,11 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 import Menu from "./Menu";
 import Books from "./Books";
-import { bookAddAll } from './actions';
 import Genre from "./Genre";
+import BookDetail from "./BookDetail";
+
+import { bookAddAll } from './actions';
+import { bookAddGenre } from './actions';
 
 class App extends React.Component {
   
@@ -15,6 +18,11 @@ class App extends React.Component {
 			return res.json();
 			}).then((data) => {
 				this.props.dispatch(bookAddAll(data));
+				
+				debugger;
+				const unique = [...new Set(data.map(books => books.genre))];
+				this.props.dispatch(bookAddGenre(unique));
+				
 		});
 	}
 	
@@ -22,14 +30,15 @@ class App extends React.Component {
 	  return (
 		<div className="wrapper">
 		<Menu />
-		<Genre />
 			<Provider store={this.props.store}>
 				<Router>
 					<Routes>
 						<Route path="/" element={<Books />} />
+						<Route path="/genre" element={<Genre />} />
 					</Routes>
 				</Router>
 			</Provider>
+			
 		</div>
 	  );
 	}
