@@ -17,11 +17,9 @@ class App extends React.Component {
 		fetch('books').then(function(res) {
 			return res.json();
 			}).then((data) => {
+				const genres = [...new Set(data.map(books => books.genre)), 'Все'];
 				this.props.dispatch(bookAddAll(data));
-				
-				debugger;
-				const unique = [...new Set(data.map(books => books.genre))];
-				this.props.dispatch(bookAddGenre(unique));
+				this.props.dispatch(bookAddGenre(genres));
 				
 		});
 	}
@@ -31,10 +29,10 @@ class App extends React.Component {
 		<div className="wrapper">
 		<Menu />
 			<Provider store={this.props.store}>
+				<Genre />
 				<Router>
 					<Routes>
 						<Route path="/" element={<Books />} />
-						<Route path="/genre" element={<Genre />} />
 					</Routes>
 				</Router>
 			</Provider>

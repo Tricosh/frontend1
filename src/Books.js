@@ -11,8 +11,8 @@ export class Books extends Component {
 	render() {
 		return (
 			<main>
-			{this.props.books.map((book) => (
-				<Book book={book} key={book._id}/>
+			{this.props.books.filter((book) => book.genre === this.props.genre || this.props.genre === 'Все').map((book) => (
+				<Book book={book} key={book._id} onAddOrder={this.props.onAddOrder}/>
 			))}
 			</main>
 		)
@@ -21,7 +21,8 @@ export class Books extends Component {
 function mapStateToProps(state) {
 
 	return {
-		books: [...state.books]
+		books: [...state.books],
+		genre: state.genres.selected
 	}
 }
 

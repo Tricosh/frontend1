@@ -7,7 +7,7 @@ export class BookDetail extends Component {
 	
 	render() {
 		return (
-			<div className='bookdetail'>
+			<div className='book'>
 				<div>
 					<img src={"./img/" + this.props.book.picture} onClick={() => this.onbookfindOne(this.props.book)} />
 					<h2>{this.props.book.title}</h2>

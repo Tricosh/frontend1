@@ -1,31 +1,27 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
-import { bookAddGenre } from './actions';
+import { bookSelectGenre } from './actions';
 
 export class Genre extends Component {
 	
 	constructor(props) {
 		super(props)
 		
-		{/*this.onAddGenre = this.onAddGenre.bind(this);*/}	
+		this.onSelectGenre = this.onSelectGenre.bind(this);	
 	}
 	
-	{/*onAddGenre(e) {
+	onSelectGenre(e, genre) {
 		e.preventDefault();
-		fetch('genre').then(function(res) {
-			return res.json();
-			}).then((data) => {
-				this.props.dispatch(bookAddGenre(data));
-		});
-	}*/}
+        this.props.dispatch(bookSelectGenre(genre));
+	}
 		
 	render() {
 		return (
 			<div className='genre'>
-			{/*{this.state.genre.map(el => (
-				<div key={el.key} onClick={() => this.onAddGenre}>{el.name}</div>
-			))}*/}
+			{this.props.genres.genres.map(genre => (
+				<div key={genre} onClick={(e) => this.onSelectGenre(e, genre)}>{genre}</div>
+			))}
 			</div>
 		)
 	}
@@ -34,7 +30,7 @@ export class Genre extends Component {
 function mapStateToProps(state) {
 
 	return {
-		genres: [...state.genres]
+		genres: {...state.genres}
 	}
 }
 

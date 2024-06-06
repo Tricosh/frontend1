@@ -1,34 +1,32 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
-import { bookfindOne } from './actions';
 import BookDetail from "./BookDetail";
+import { bookOrder } from './actions';
 
 export class Book extends Component {
 	
 	constructor(props) {
     super(props);
-      this.onbookfindOne = this.onbookfindOne.bind(this);
+	
+		this.onAddOrder = this.onAddOrder.bind(this);
+		orders = []
     }
   
-  onbookfindOne() {
-
-    fetch(`books/${this.props.book._id}`, {
-    method: 'GET'
-	}).then((response) => {
-    return response.json();
-	}).then((data) => {
-       this.props.dispatch(bookfindOne(this.props.book._id));
-    });    
-  }
+	onAddOrder(e) {
+		e.preventDefault();
+		alert ('book')
+	
+	}
+ 
 		
 	render() {
 		return (
 			<div className='book'>
-				<img src={"./img/" + this.props.book.picture} onClick={() => this.onbookfindOne(this.props.bookdetail)} />
+				<img src={"./img/" + this.props.book.picture}  />
 				<h2>{this.props.book.title}</h2>
 				<p>{this.props.book.author}</p>
-				<div className='add-to'>Зарезервировать</div>
+				<div className='add-to' onClick{(e) => this.onAddOrder(e)}>Зарезервировать</div>
 				
 			</div>
 		)
