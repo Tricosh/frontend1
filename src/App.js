@@ -6,6 +6,7 @@ import Menu from "./Menu";
 import Books from "./Books";
 import Genre from "./Genre";
 import BookDetail from "./BookDetail";
+import Cart from "./Cart";
 
 import { bookAddAll } from './actions';
 import { bookAddGenre } from './actions';
@@ -33,6 +34,8 @@ class App extends React.Component {
 				<Router>
 					<Routes>
 						<Route path="/" element={<Books />} />
+						<Route path="/book" element={ <BookDetail />} />
+						<Route path="/cart" element={ <Cart />} />
 					</Routes>
 				</Router>
 			</Provider>

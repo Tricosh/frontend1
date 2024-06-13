@@ -38,20 +38,11 @@ header .book-reserv {
 	cursor: pointer;
 	transition: color 500ms ease;
 	font-size: 45px;
+	color: #9B4222;
 }
 
-header .book-reserv:hover,
-header .book-reserv.active {
+header .book-reserv:hover {
 	color:  #a1764b;
-}
-
-header .book-reserv-mod {
-	position: absolute;
-	top: 100px;
-	right: 0;
-	width: 450px;
-	min-height: 100px;
-	background: #a1764b;
 }
 
 .genre div {
@@ -71,27 +62,91 @@ header .book-reserv-mod {
 	transform: scale(1.1);
 }
 
-
-.bookdetail {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 9999;
-    overflow: auto;
+.Detail {
+	margin-top: 30px;
 }
 
-.bookdetail > div {
-    width: 400px;
-    position: relative;
-    margin: 10% auto;
-    padding: 40px 30px;
-    background: #fff;
-    border-radius: 9px;
+.Detail img {
+	display: flex;
+	float: left;
+	width: 25%
 }
 
+.Detail h2 {
+	display: flex;
+	padding-left: 40px;
+}
+.Detail p {
+	display: flex;
+	padding-left: 40px;
+	margin-top: 20px;
+}
+
+.Detail .Stars span {
+	display: flex;
+	color: #FFCF40;
+	text-align: left;
+}
+
+.Details .AddCart p { 
+	position: absolute;
+	right: 20px;
+	bottom: 15px;
+	color: #F8F8FF;
+	background: #3CB371;
+	width: 170px;
+	height: 40px;
+	text-decoration: none;
+	text-align: center;
+	line-height: 45px;
+	border-radius: 20px 20px 20px 20px;
+	cursor: pointer;
+	font-weight: 600;	
+}
+
+.BookCart a {
+	text-decoration: none;
+}
+
+.BookCart {
+	width: 100%;
+	margin-top: 30px;
+	float: left;
+	margin-bottom: 20px;
+}
+
+.BookCart img {
+	display: flex;
+	float: left;
+	width: 15%;
+	padding-right: 40px;
+}
+
+.BookCart p{
+	display: flex;
+	margin-left: 40px;
+}
+
+.BookCart .add-tocart {
+	position: absolute;
+	margin-top: 200px;
+	color: 	#F8F8FF;
+	background: #3CB371;
+	width: 130px;
+	height: 30px;
+	text-align: center;
+	line-height: 35px;
+	border-radius: 20px 20px 20px 20px;
+	cursor: pointer;
+	font-weight: 600;
+}
+
+.BookCart .Trash {
+	float: right;
+	font-size: 45px;
+	color: #DC143C;
+	margin-top: 50px;
+}
 
 main {
 	display: flex;
@@ -137,6 +192,10 @@ main .add-to {
 	border-radius: 20px 20px 20px 20px;
 	cursor: pointer;
 	font-weight: 600;
+}
+
+main a {
+	text-decoration: none;
 }
 
 main .add-to:hover{
